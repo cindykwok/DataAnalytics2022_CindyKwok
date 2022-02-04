@@ -144,3 +144,38 @@ boxplot(PopulationPerUnit,NumUnits)
 GPW3Res <- PopulationPerUnit[!Resolution]
 GRes <- GPW3Res[!is.na(GPW3Res)]
 hist(GRes)
+
+#CONTINUATION OF LAB 1 
+#----------------------
+
+plot(ecdf(EPI_2010data$EPI),do.points=FALSE,verticals = TRUE) 
+attach(EPI_2010data)
+plot(ecdf(EPI),do.points=FALSE,verticals = TRUE) 
+plot(ecdf(EPI),do.points=TRUE,verticals = TRUE) 
+par(pty="s")
+help("qqnorm")
+help("qqplot")
+qqnorm(EPI)
+qqline(EPI) #add line to QQ plot
+x<-seq(30,95,1)
+x
+x2 <- seq(30,95,2)
+x2
+qqplot(qt(ppoints(250),df=5),x, xlab = "Q-Q plot")
+qqline(x)
+
+plot(ecdf(AIR_H),do.points=FALSE,verticals = TRUE) 
+plot(ecdf(AIR_H),do.points=TRUE,verticals = TRUE) 
+par(pty="s")
+qqnorm(AIR_H)
+qqline(AIR_H)
+
+plot(ecdf(WATER_E),do.points=FALSE,verticals = TRUE) 
+plot(ecdf(WATER_E),do.points=TRUE,verticals = TRUE) 
+qqnorm(WATER_E)
+qqline(WATER_E)
+
+#intercomparing
+qqplot(EPI, AIR_H)
+qqplot(AIR_H,WATER_E)
+boxplot(EPI, DALY,ENVHEALTH, ECOSYSTEM, AIR_E,AIR_H,WATER_E,WATER_H,BIODIVERSITY)
